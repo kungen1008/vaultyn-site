@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vaultyn.com/sitemap-index.xml

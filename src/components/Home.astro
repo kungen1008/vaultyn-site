@@ -1,0 +1,118 @@
+---
+// 首页（三种语言共用，文字来自 src/i18n.ts）
+import Base from '../layouts/Base.astro';
+import { T, shots, type Lang } from '../i18n';
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = T[lang], img = shots(lang);
+const chipCls = ['c-r', 'c-w', 'c-w'];
+---
+<Base lang={lang}>
+  <header class="hero"><div class="wrap">
+    <span class="eyebrow">{t.hero.eyebrow}</span>
+    <h1>{t.hero.h1a}<br><span>{t.hero.h1b}</span></h1>
+    <p class="lead">{t.hero.lead}</p>
+    <div class="cta"><span class="btn d off" aria-disabled="true"> {t.hero.store}</span><a class="btn g" href="#features">{t.hero.more}</a></div>
+    <div class="fine">{t.hero.fine}</div>
+    <div class="shot">
+      <div class="win"><img src={`${img}/home.webp`} width="1920" height="1200" alt="" fetchpriority="high"></div>
+      <div class="float f1" style={`background-image:url(${img}/card.webp)`} role="img" aria-label=""></div>
+      <div class="float f2"><b>{t.hero.checkTitle}</b>{t.hero.checkChips.map((c, i) => <span class={`chip ${chipCls[i]}`}>{c}</span>)}<div class="muted" style="margin-top:6px">{t.hero.checkNote}</div></div>
+    </div>
+    <div class="trust">{t.trust.map(([b, s]) => <div><b>{b}</b>{s}</div>)}</div>
+  </div></header>
+
+  <section class="pain"><div class="wrap">
+    <div class="kicker">{t.pain.kicker}</div><h2>{t.pain.h}</h2><p class="p2">{t.pain.p}</p>
+    <div class="pains">{t.pain.items.map(([q, a]) => <div><div class="q">{q}</div><div class="a" set:html={a} /></div>)}</div>
+  </div></section>
+
+  <section id="features"><div class="wrap">
+    {t.feats.map((f, i) => (
+      <div class={`feat ${i % 2 ? 'r' : ''}`}>
+        <div class="txt"><div class="kicker">{f.kicker}</div><h3 set:html={f.title} /><p>{f.text}</p><ul>{f.points.map(p => <li>{p}</li>)}</ul></div>
+        <div class="img"><img src={`${img}/${f.img}.webp`} width="1920" height="1200" alt="" loading="lazy"></div>
+      </div>))}
+    <div class="grid8">{t.grid.map(([e, b, s]) => <div><div class="e">{e}</div><b>{b}</b><span>{s}</span></div>)}</div>
+  </div></section>
+
+  <section class="sec" id="security"><div class="wrap">
+    <div class="kicker">{t.sec.kicker}</div><h2>{t.sec.h}</h2><p class="p2">{t.sec.p}</p>
+    <div class="flow">{t.sec.flow.map(([b, s], i) => <>{i > 0 && <div class="arr">→</div>}<div class="node"><b>{b}</b><span>{s}</span></div></>)}</div>
+    <div class="not">{t.sec.nots.map(([b, s]) => <div><b>{b}</b><br>{s}</div>)}</div>
+  </div></section>
+
+  <section id="pricing"><div class="wrap">
+    <div class="kicker">{t.price.kicker}</div><h2>{t.price.h}</h2><p class="p2">{t.price.p}</p>
+    <div class="pc"><div class="t">{t.price.label}</div><div class="n">{t.price.amount} <small>{t.price.unit}</small></div>
+      <ul>{t.price.points.map(p => <li>{p}</li>)}</ul><span class="btn d off"> {t.price.btn}</span></div>
+  </div></section>
+
+  <section id="faq" style="padding-top:20px"><div class="wrap">
+    <div class="kicker">{t.faq.kicker}</div><h2>{t.faq.h}</h2>
+    <div class="faq">{t.faq.items.map(x => <div><b>{x.q}</b><p>{x.a}</p></div>)}</div>
+  </div></section>
+</Base>
+
+<style>
+.hero{padding:76px 0 40px;text-align:center;background:radial-gradient(1000px 420px at 50% -60px,#e0edff,transparent 70%)}
+.eyebrow{display:inline-block;font-size:14px;color:var(--blue);background:#eaf2ff;border-radius:999px;padding:5px 14px;font-weight:600}
+h1{font-size:clamp(38px,6vw,62px);line-height:1.15;margin:20px 0 18px;letter-spacing:-.5px}
+h1 span{background:linear-gradient(90deg,#2563eb,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:clamp(17px,2vw,19px);color:var(--sub);max-width:760px;margin:0 auto 30px}
+.cta{display:flex;gap:14px;justify-content:center;align-items:center;flex-wrap:wrap}
+.fine{font-size:13px;color:#8a93a5;margin-top:14px}
+.shot{position:relative;margin:54px auto 0;max-width:1040px}
+.win{border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(15,23,42,.18),0 0 0 1px rgba(15,23,42,.06)}
+.win img{display:block;width:100%}
+.float{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(15,23,42,.22);background:#fff}
+/* 银行卡：从 1920×1200 的截图里取卡面区域 */
+.f1{width:398px;height:199px;right:-48px;bottom:-46px;background-size:1501px 938px;background-position:-726px -260px;box-shadow:0 24px 50px rgba(30,64,175,.35)}
+.f2{left:-48px;top:120px;padding:14px 16px;font-size:13px;width:230px;text-align:left}
+.f2 b{display:block;font-size:14px;margin-bottom:6px}
+.chip{display:inline-block;border-radius:6px;padding:1px 8px;font-size:12px;margin:2px 4px 2px 0}
+.c-ok{background:#e3f6e8;color:#16803c}.c-w{background:#fff2d6;color:#9a6200}.c-r{background:#fde8e8;color:#c62828}
+.trust{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin:90px auto 0;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust div{text-align:center;font-size:14px;color:var(--sub)}.trust b{display:block;font-size:17px;color:var(--ink);margin-bottom:2px}
+section{padding:96px 0}
+.kicker{font-size:14px;font-weight:700;color:var(--blue);letter-spacing:.5px}
+h2{font-size:clamp(30px,4vw,40px);line-height:1.2;margin:10px 0 14px;letter-spacing:-.3px}
+.p2{font-size:18px;color:var(--sub);max-width:640px;margin:0}
+.pain{background:var(--soft)}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.pains>div{background:#fff;border-radius:18px;padding:24px;box-shadow:0 1px 0 var(--line)}
+.pains .q{font-size:17px;font-weight:700;margin-bottom:8px}.pains .a{color:var(--sub);font-size:15px}
+.pains .a :global(b){color:var(--blue)}
+.feat{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:center;margin-top:84px}
+.feat:first-child{margin-top:0}
+.feat.r{grid-template-columns:1.25fr 1fr}.feat.r .txt{order:2}
+.feat h3{font-size:30px;margin:8px 0 12px;line-height:1.25}.feat p{color:var(--sub);font-size:17px;margin:0 0 14px}
+.feat ul{margin:0;padding:0;list-style:none;font-size:15px}.feat li{padding:5px 0 5px 26px;position:relative}
+.feat li:before{content:"";position:absolute;left:0;top:11px;width:14px;height:14px;border-radius:50%;background:#dbeafe;box-shadow:inset 0 0 0 4px #2563eb}
+.img{border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,.14),0 0 0 1px rgba(15,23,42,.06)}.img img{display:block;width:100%}
+.grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px}
+.grid8>div{border:1px solid var(--line);border-radius:16px;padding:20px}
+.grid8 .e{font-size:26px}.grid8 b{display:block;margin:8px 0 4px}.grid8 span{font-size:14px;color:var(--sub)}
+.sec{background:#0b1220;color:#e6ebf5}
+.sec h2{color:#fff}.sec .p2{color:#a7b0c2}.sec .kicker{color:#38bdf8}
+.flow{display:flex;align-items:stretch;gap:14px;margin-top:44px}
+.node{flex:1;background:#141d31;border:1px solid #24304b;border-radius:16px;padding:18px;text-align:center}
+.node b{display:block;color:#fff;font-size:16px}.node span{font-size:13px;color:#8b96ad}
+.arr{color:#38bdf8;font-size:22px;align-self:center}
+.not{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.not>div{border:1px solid #24304b;border-radius:14px;padding:16px 18px;font-size:15px;color:#c8d0df}.not b{color:#fff}
+.pc{margin-top:36px;max-width:520px;border:2px solid var(--blue);border-radius:22px;padding:30px;box-shadow:0 20px 50px rgba(37,99,235,.12)}
+.pc .t{font-size:15px;color:var(--sub);font-weight:600}.pc .n{font-size:44px;font-weight:800;margin:6px 0}.pc .n small{font-size:16px;color:var(--sub);font-weight:500}
+.pc ul{padding-left:18px;color:var(--sub);font-size:15px;margin:14px 0 22px}
+.faq{display:grid;grid-template-columns:1fr 1fr;gap:20px 40px;margin-top:34px}
+.faq b{display:block;font-size:17px;margin-bottom:6px}.faq p{margin:0;color:var(--sub);font-size:15px}
+@media (max-width:900px){
+  section{padding:64px 0}
+  .hero{padding-top:48px}
+  .f1,.f2{display:none}
+  .trust{grid-template-columns:repeat(2,1fr);margin-top:48px}
+  .pains,.grid8,.not,.faq{grid-template-columns:1fr}
+  .feat,.feat.r{grid-template-columns:1fr;gap:24px;margin-top:56px}.feat.r .txt{order:0}
+  .flow{flex-direction:column}.arr{transform:rotate(90deg)}
+}
+</style>

@@ -1,0 +1,36 @@
+---
+// 隐私政策、使用帮助：文字页面的共用排版
+import Base from '../layouts/Base.astro';
+import { T, type Lang } from '../i18n';
+interface Props { lang: Lang; kind: 'privacy' | 'support' }
+const { lang, kind } = Astro.props;
+const t = T[lang], p = t.privacy, h = t.help;
+---
+<Base lang={lang} page={`${kind}/`} title={kind === 'privacy' ? p.title : h.title}>
+  <main class="doc"><div class="wrap narrow">
+    {kind === 'privacy' ? (<>
+      <h1>{p.title}</h1><div class="muted">{p.updated}</div>
+      {p.sections.map(s => <section><h2>{s.h}</h2>{s.p.map(x => <p set:html={x} />)}</section>)}
+    </>) : (<>
+      <h1>{h.title}</h1><p class="lead">{h.lead}</p>
+      <section class="box"><h2>{h.contactH}</h2><p set:html={h.contactP} /></section>
+      <section><h2>{h.startH}</h2><ol>{h.steps.map(s => <li>{s}</li>)}</ol></section>
+      <section><h2>{h.faqH}</h2>{h.items.map(x => <div class="qa"><b>{x.q}</b><p>{x.a}</p></div>)}</section>
+      <section><h2>{h.securityH}</h2><p set:html={h.securityP} /></section>
+    </>)}
+  </div></main>
+</Base>
+
+<style>
+.doc{padding:56px 0 20px}
+.narrow{max-width:760px}
+h1{font-size:40px;margin:0 0 6px;letter-spacing:-.3px}
+.lead{font-size:18px;color:var(--sub)}
+section{margin-top:34px}
+h2{font-size:22px;margin:0 0 10px}
+p,li{color:#2b3343;font-size:16px}
+ol{padding-left:22px}li{margin:6px 0}
+.doc :global(a){color:var(--blue)}
+.box{background:var(--soft);border-radius:16px;padding:20px 24px}
+.qa{margin:14px 0}.qa b{font-size:17px}.qa p{margin:4px 0 0}
+</style>
