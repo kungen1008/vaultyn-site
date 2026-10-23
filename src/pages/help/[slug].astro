@@ -1,0 +1,7 @@
+---
+import Help from '../../components/Help.astro';
+import { helpPaths } from '../../help';
+export const getStaticPaths = () => helpPaths('zh');
+const { entry } = Astro.props;
+---
+<Help lang="zh" entry={entry} />

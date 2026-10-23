@@ -1,7 +1,7 @@
 ---
 // 首页（三种语言共用，文字来自 src/i18n.ts）
 import Base from '../layouts/Base.astro';
-import { T, shots, type Lang } from '../i18n';
+import { T, shots, path, type Lang } from '../i18n';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = T[lang], img = shots(lang);
@@ -12,10 +12,15 @@ const chipCls = ['c-r', 'c-w', 'c-w'];
     <span class="eyebrow">{t.hero.eyebrow}</span>
     <h1>{t.hero.h1a}<br><span>{t.hero.h1b}</span></h1>
     <p class="lead">{t.hero.lead}</p>
-    <div class="cta"><span class="btn d off" aria-disabled="true"> {t.hero.store}</span><a class="btn g" href="#features">{t.hero.more}</a></div>
+    <div class="cta"><span class="btn d off" aria-disabled="true"> {t.hero.store}</span><a class="btn g" href={path(lang, 'features/')}>{t.hero.more}</a></div>
     <div class="fine">{t.hero.fine}</div>
     <div class="shot">
-      <div class="win"><img src={`${img}/home.webp`} width="1920" height="1200" alt="" fetchpriority="high"></div>
+      <div class="win">
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto" poster={`${img}/hero-poster.webp`} width="1280" height="800" aria-label={t.hero.videoLabel}>
+          <source src={`${img}/hero.webm`} type="video/webm"><source src={`${img}/hero.mp4`} type="video/mp4">
+        </video>
+        <button type="button" class="vbtn" id="heroToggle" aria-label={t.hero.pause} data-pause={t.hero.pause} data-play={t.hero.play}>❚❚</button>
+      </div>
       <div class="float f1" style={`background-image:url(${img}/card.webp)`} role="img" aria-label=""></div>
       <div class="float f2"><b>{t.hero.checkTitle}</b>{t.hero.checkChips.map((c, i) => <span class={`chip ${chipCls[i]}`}>{c}</span>)}<div class="muted" style="margin-top:6px">{t.hero.checkNote}</div></div>
     </div>
@@ -24,34 +29,43 @@ const chipCls = ['c-r', 'c-w', 'c-w'];
 
   <section class="pain"><div class="wrap">
     <div class="kicker">{t.pain.kicker}</div><h2>{t.pain.h}</h2><p class="p2">{t.pain.p}</p>
-    <div class="pains">{t.pain.items.map(([q, a]) => <div><div class="q">{q}</div><div class="a" set:html={a} /></div>)}</div>
+    <div class="pains">{t.pain.items.map(([q, a]) => <div class="rv"><div class="q">{q}</div><div class="a" set:html={a} /></div>)}</div>
   </div></section>
 
   <section id="features"><div class="wrap">
     {t.feats.map((f, i) => (
-      <div class={`feat ${i % 2 ? 'r' : ''}`}>
+      <div class={`feat rv ${i % 2 ? 'r' : ''}`}>
         <div class="txt"><div class="kicker">{f.kicker}</div><h3 set:html={f.title} /><p>{f.text}</p><ul>{f.points.map(p => <li>{p}</li>)}</ul></div>
         <div class="img"><img src={`${img}/${f.img}.webp`} width="1920" height="1200" alt="" loading="lazy"></div>
       </div>))}
-    <div class="grid8">{t.grid.map(([e, b, s]) => <div><div class="e">{e}</div><b>{b}</b><span>{s}</span></div>)}</div>
+    <div class="grid8">{t.grid.map(([e, b, s]) => <div class="rv"><div class="e">{e}</div><b>{b}</b><span>{s}</span></div>)}</div>
   </div></section>
 
   <section class="sec" id="security"><div class="wrap">
     <div class="kicker">{t.sec.kicker}</div><h2>{t.sec.h}</h2><p class="p2">{t.sec.p}</p>
-    <div class="flow">{t.sec.flow.map(([b, s], i) => <>{i > 0 && <div class="arr">→</div>}<div class="node"><b>{b}</b><span>{s}</span></div></>)}</div>
-    <div class="not">{t.sec.nots.map(([b, s]) => <div><b>{b}</b><br>{s}</div>)}</div>
+    <div class="flow">{t.sec.flow.map(([b, s], i) => <>{i > 0 && <div class="arr">→</div>}<div class="node rv"><b>{b}</b><span>{s}</span></div></>)}</div>
+    <div class="not">{t.sec.nots.map(([b, s]) => <div class="rv"><b>{b}</b><br>{s}</div>)}</div>
   </div></section>
 
   <section id="pricing"><div class="wrap">
     <div class="kicker">{t.price.kicker}</div><h2>{t.price.h}</h2><p class="p2">{t.price.p}</p>
-    <div class="pc"><div class="t">{t.price.label}</div><div class="n">{t.price.amount} <small>{t.price.unit}</small></div>
+    <div class="pc rv"><div class="t">{t.price.label}</div><div class="n">{t.price.amount} <small>{t.price.unit}</small></div>
       <ul>{t.price.points.map(p => <li>{p}</li>)}</ul><span class="btn d off"> {t.price.btn}</span></div>
   </div></section>
 
   <section id="faq" style="padding-top:20px"><div class="wrap">
     <div class="kicker">{t.faq.kicker}</div><h2>{t.faq.h}</h2>
-    <div class="faq">{t.faq.items.map(x => <div><b>{x.q}</b><p>{x.a}</p></div>)}</div>
+    <div class="faq">{t.faq.items.map(x => <div class="rv"><b>{x.q}</b><p>{x.a}</p></div>)}</div>
   </div></section>
+  <script is:inline>
+    // 首屏视频：系统开了“减少动态效果”时不自动播放；右下角按钮暂停 / 继续
+    (() => {
+      const v = document.getElementById('heroVideo'), b = document.getElementById('heroToggle'); if (!v || !b) return;
+      const set = () => { b.textContent = v.paused ? '▶' : '❚❚'; b.setAttribute('aria-label', v.paused ? b.dataset.play : b.dataset.pause); };
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); }
+      b.onclick = () => { v.paused ? v.play() : v.pause(); }; v.onplay = v.onpause = set; set();
+    })();
+  </script>
 </Base>
 
 <style>
@@ -64,7 +78,8 @@ h1 span{background:linear-gradient(90deg,#3aa0ff,#2f7bf5 55%,#4a55e0);-webkit-ba
 .fine{font-size:13px;color:#8a93a5;margin-top:14px}
 .shot{position:relative;margin:54px auto 0;max-width:1040px}
 .win{border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(15,23,42,.18),0 0 0 1px rgba(15,23,42,.06)}
-.win img{display:block;width:100%}
+.win{position:relative}.win img,.win video{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#f3f4f8}
+.vbtn{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;border:0;background:rgba(15,23,42,.55);color:#fff;font-size:11px;cursor:pointer;opacity:0;transition:opacity .2s}.win:hover .vbtn,.vbtn:focus-visible{opacity:1}
 .float{position:absolute;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(15,23,42,.22);background:#fff}
 /* 银行卡：从 1920×1200 的截图里取卡面区域 */
 .f1{width:398px;height:199px;right:-48px;bottom:-46px;background-size:1501px 938px;background-position:-726px -260px;box-shadow:0 24px 50px rgba(47,123,245,.35)}
@@ -91,7 +106,8 @@ h2{font-size:clamp(30px,4vw,40px);line-height:1.2;margin:10px 0 14px;letter-spac
 .feat li:before{content:"";position:absolute;left:0;top:11px;width:14px;height:14px;border-radius:50%;background:var(--ice);box-shadow:inset 0 0 0 4px var(--blue)}
 .img{border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(15,23,42,.14),0 0 0 1px rgba(15,23,42,.06)}.img img{display:block;width:100%}
 .grid8{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:72px}
-.grid8>div{border:1px solid var(--line);border-radius:16px;padding:20px}
+.grid8>div{border:1px solid var(--line);border-radius:16px;padding:20px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.grid8>div:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(15,23,42,.08);border-color:#d6e4f7}
 .grid8 .e{font-size:26px}.grid8 b{display:block;margin:8px 0 4px}.grid8 span{font-size:14px;color:var(--sub)}
 .sec{background:#0b1220;color:#e6ebf5}
 .sec h2{color:#fff}.sec .p2{color:#a7b0c2}.sec .kicker{color:#7cc0ff}

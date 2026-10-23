@@ -14,7 +14,7 @@ type Section = { h: string; p: string[] };
 export interface Dict {
   meta: { title: string; desc: string };
   nav: { features: string; security: string; pricing: string; help: string; get: string };
-  hero: { eyebrow: string; h1a: string; h1b: string; lead: string; store: string; more: string; fine: string; checkTitle: string; checkChips: string[]; checkNote: string };
+  hero: { eyebrow: string; h1a: string; h1b: string; lead: string; store: string; more: string; fine: string; checkTitle: string; checkChips: string[]; checkNote: string; videoLabel: string; pause: string; play: string };
   trust: [string, string][];
   pain: { kicker: string; h: string; p: string; items: [string, string][] };
   feats: Feat[];
@@ -32,8 +32,8 @@ const zh: Dict = {
   nav: { features: '功能', security: '安全', pricing: '价格', help: '帮助', get: '获取' },
   hero: { eyebrow: '离线加密的账号账本', h1a: '每个账号，', h1b: '都记得清清楚楚。',
     lead: '密码、绑定的手机和邮箱、两步验证、备用码、安全问答……一个地方记全。数据加密后只存在你自己的 Mac 和网盘里——没有服务器，不用注册。',
-    store: 'Mac App Store · 即将上架', more: '了解功能 ↓', fine: 'macOS 12 及以上 · 简体中文 / 繁體中文 / English',
-    checkTitle: '安全检查', checkChips: ['1 个弱密码', '2 个重复', '2 个到期'], checkNote: '全部在本机完成' },
+    store: 'Mac App Store · 即将上架', more: '了解功能 →', fine: 'macOS 12 及以上 · 简体中文 / 繁體中文 / English',
+    checkTitle: '安全检查', checkChips: ['1 个弱密码', '2 个重复', '2 个到期'], checkNote: '全部在本机完成', videoLabel: 'Vaultyn 使用演示：搜索账号、复制密码、查看验证码和安全检查', pause: '暂停演示', play: '播放演示' },
   trust: [['完全离线', '不联网也能用'], ['不用注册', '没有账号、没有服务器'], ['AES-256 加密', 'Argon2id 保护主密码'], ['每天自动备份', '可放进 iCloud 云盘同步'], ['三种语言', '简体、繁體、English']],
   pain: { kicker: '为什么需要它', h: '密码记住了，其他的呢？', p: '密码管理器帮你记住密码，可真正麻烦的，往往是密码之外的那些事。',
     items: [['“这个网站当初是用哪个邮箱注册的？”', '每个账号绑定的<b>手机、邮箱、登录方式</b>都记在一起，搜一下就知道。'],
@@ -55,7 +55,7 @@ const zh: Dict = {
     { q: '能在多台 Mac 上用吗？', a: '可以。把数据文件夹放在 iCloud 云盘、Dropbox、OneDrive 等同步目录里，各台 Mac 打开同一个文件。' },
     { q: '忘了主密码怎么办？', a: '用创建时保存的恢复密钥重新设置。没有恢复密钥就无法打开——因为连我们也打不开。' },
     { q: '能从其他密码管理器导入吗？', a: '支持从 1Password、Bitwarden、KeePass、LastPass、Apple 密码和浏览器导出的文件导入，也能导入 Google 身份验证器的二维码。' }] },
-  footer: { tagline: '离线加密的账号账本', product: '产品', support: '支持', legal: '说明', links: { features: '功能', pricing: '价格', help: '使用帮助', faq: '常见问题', privacy: '隐私政策', security: '安全说明' } },
+  footer: { tagline: '离线加密的账号账本', product: '产品', support: '支持', legal: '说明', links: { features: '功能', pricing: '价格', help: '帮助中心', faq: '常见问题', terms: '使用条款', about: '关于', contact: '联系支持', privacy: '隐私政策', security: '安全说明' } },
   privacy: { title: '隐私政策', updated: '最后更新：2026 年 10 月 23 日', sections: [
     { h: '一句话概括', p: ['Vaultyn 不收集、不上传、不出售你的任何个人数据。没有账号系统，没有保存你数据的服务器，也没有统计和广告。'] },
     { h: '你的数据存在哪里', p: ['你在 Vaultyn 里记录的全部内容，都用 AES-256-GCM 加密（密钥由你的主密码经 Argon2id 生成），保存在你的 Mac 上和你自己选择的文件夹里（例如 iCloud 云盘）。', '我们无法访问这些数据，也无法帮你找回主密码。'] },
@@ -81,34 +81,34 @@ const zh: Dict = {
 };
 
 const zhHant: Dict = {
-  meta: { title: 'Vaultyn · 離線加密的帳號帳本', desc: '密碼、綁定的手機和電子郵件、兩步驟驗證、備用碼、安全問答，一個地方記全。資料加密後只存在你自己的裝置和雲端硬碟裡，沒有伺服器，不用註冊。' },
+  meta: { title: 'Vaultyn · 離線加密的帳號帳本', desc: '密碼、綁定的手機和電子郵件、兩步驗證、備用碼、安全問答，一個地方記全。資料加密後只存在你自己的裝置和雲端硬碟裡，沒有伺服器，不用註冊。' },
   nav: { features: '功能', security: '安全', pricing: '價格', help: '說明', get: '取得' },
   hero: { eyebrow: '離線加密的帳號帳本', h1a: '每個帳號，', h1b: '都記得清清楚楚。',
-    lead: '密碼、綁定的手機和電子郵件、兩步驟驗證、備用碼、安全問答……一個地方記全。資料加密後只存在你自己的 Mac 和雲端硬碟裡——沒有伺服器，不用註冊。',
-    store: 'Mac App Store · 即將上架', more: '了解功能 ↓', fine: 'macOS 12 以上 · 简体中文 / 繁體中文 / English',
-    checkTitle: '安全檢查', checkChips: ['1 個弱密碼', '2 個重複', '2 個到期'], checkNote: '全部在本機完成' },
+    lead: '密碼、綁定的手機和電子郵件、兩步驗證、備用碼、安全問答……一個地方記全。資料加密後只存在你自己的 Mac 和雲端硬碟裡——沒有伺服器，不用註冊。',
+    store: 'Mac App Store · 即將上架', more: '了解功能 →', fine: 'macOS 12 以上 · 简体中文 / 繁體中文 / English',
+    checkTitle: '安全檢查', checkChips: ['1 個弱密碼', '2 個重複', '2 個到期'], checkNote: '全部在本機完成', videoLabel: 'Vaultyn 使用示範：搜尋帳號、複製密碼、查看驗證碼和安全檢查', pause: '暫停示範', play: '播放示範' },
   trust: [['完全離線', '不連網也能用'], ['不用註冊', '沒有帳號、沒有伺服器'], ['AES-256 加密', 'Argon2id 保護主密碼'], ['每天自動備份', '可放進 iCloud 雲碟同步'], ['三種語言', '简体、繁體、English']],
   pain: { kicker: '為什麼需要它', h: '密碼記住了，其他的呢？', p: '密碼管理器幫你記住密碼，可真正麻煩的，往往是密碼之外的那些事。',
     items: [['「這個網站當初是用哪個信箱註冊的？」', '每個帳號綁定的<b>手機、信箱、登入方式</b>都記在一起，搜尋一下就知道。'],
       ['「換了手機號碼，哪些帳號要改綁？」', '依手機號碼、信箱彙總，<b>一眼看到受影響的全部帳號</b>，改完一個是一個。'],
-      ['「兩步驟驗證的備用碼去哪了？」', '驗證碼、<b>備用碼、安全問答</b>和帳號放在一起，用過的備用碼會標記出來。']] },
+      ['「兩步驗證的備用碼去哪了？」', '驗證碼、<b>備用碼、安全問答</b>和帳號放在一起，用過的備用碼會標記出來。']] },
   feats: [
     { kicker: '帳號關係', title: '一個信箱牽動多少帳號，<br>一目了然', text: '信箱被盜、手機號碼要停用之前，先看看會影響哪些帳號。', points: ['依信箱、手機號碼自動彙總', '記下每個帳號的登入方式（例如用另一個帳號登入）', '點一下就跳到對應帳號去修改'], img: 'audit-rel' },
     { kicker: '安全檢查', title: '弱密碼、重複密碼、<br>外洩和到期，主動提醒', text: '不用自己一個個翻，問題直接列出來，附帶修改的入口。', points: ['密碼強度、重複使用檢查', '已知外洩檢查（只傳送密碼雜湊的前 5 位）', '證件、會員、訂閱到期前提醒'], img: 'audit' },
     { kicker: '不只是密碼', title: '銀行卡、證件、Wi-Fi、<br>貸款……30 多種類型', text: '每種類型都有合適的欄位和呈現方式：銀行卡有卡面，Wi-Fi 能產生連線 QR 碼，貸款會算出每月還款和還款計畫。', points: ['常用欄位直接填，其他收在「更多欄位」', '一個帳號下掛多張卡、多個證件', '可以自己新增類型'], img: 'loan' },
   ],
-  grid: [['🔢', '兩步驟驗證碼', '內建驗證器，直接顯示 6 位數驗證碼'], ['🧾', '備用碼管理', '用過的一個個勾掉，剩幾個一目了然'], ['📶', 'Wi-Fi QR 碼', '家人朋友掃碼直接連網'], ['📎', '加密附件', '證件照片、合約掃描檔一起加密保存'],
-    ['⏰', '到期提醒', '續費、驗車、保費，一鍵順延'], ['🖨️', '緊急復原頁', '列印出來交給家人，關鍵時刻能接手'], ['🌙', '深色模式', '跟隨系統，夜裡看也舒服'], ['🔐', 'Touch ID', '用指紋快速解鎖']],
+  grid: [['🔢', '兩步驗證碼', '內建驗證器，直接顯示 6 位數驗證碼'], ['🧾', '備用碼管理', '用過的一個個勾掉，剩幾個一目了然'], ['📶', 'Wi-Fi QR 碼', '家人朋友掃碼直接連網'], ['📎', '加密附件', '證件照片、合約掃描檔一起加密保存'],
+    ['⏰', '到期提醒', '續費、驗車、保費，一鍵順延'], ['🖨️', '緊急恢復頁', '列印出來交給家人，關鍵時刻能接手'], ['🌙', '深色模式', '跟隨系統，夜裡看也舒服'], ['🔐', '觸控 ID', '用指紋快速解鎖']],
   sec: { kicker: '安全', h: '你的資料，只屬於你', p: '沒有伺服器，就沒有伺服器會被攻破。我們看不到你的資料，也沒有辦法看到。',
     flow: [['主密碼', '只在你腦子裡'], ['Argon2id', '把主密碼變成加密金鑰，暴力破解極慢'], ['AES-256-GCM', '加密全部資料'], ['你的資料檔', '存在你的 Mac 和你選的雲端硬碟裡']],
-    nots: [['不收集資料', '沒有統計、沒有廣告、沒有帳號系統。'], ['不自動填寫', '不往網頁裡注入程式碼，減少被釣魚網站利用的可能。'], ['主密碼無法找回', '所以請保存好復原金鑰——這也是「只有你能打開」的保證。']] },
+    nots: [['不收集資料', '沒有統計、沒有廣告、沒有帳號系統。'], ['不自動填寫', '不往網頁裡注入程式碼，減少被釣魚網站利用的可能。'], ['主密碼無法找回', '所以請保存好恢復金鑰——這也是「只有你能打開」的保證。']] },
   price: { kicker: '價格', h: '先試用，再決定', p: '下載後 14 天內可以使用全部功能。', label: 'Mac · App Store', amount: 'US$24.99', unit: '解鎖全部功能', points: ['免費下載，14 天完整試用', '沒有項目數量限制', '支援「家人共享」'], btn: '即將上架' },
   faq: { kicker: '常見問題', h: '你可能想問', items: [
     { q: 'Mac 壞了，資料會不見嗎？', a: '每次修改都會自動寫入資料夾，每天還有備份。把資料夾放在 iCloud 雲碟等雲端硬碟裡，換新 Mac 後開啟同步檔、輸入主密碼即可。' },
     { q: '能在多台 Mac 上用嗎？', a: '可以。把資料夾放在 iCloud 雲碟、Dropbox、OneDrive 等同步目錄裡，各台 Mac 開啟同一個檔案。' },
-    { q: '忘了主密碼怎麼辦？', a: '用建立時保存的復原金鑰重新設定。沒有復原金鑰就無法打開——因為連我們也打不開。' },
-    { q: '能從其他密碼管理器匯入嗎？', a: '支援從 1Password、Bitwarden、KeePass、LastPass、Apple 密碼和瀏覽器匯出的檔案匯入，也能匯入 Google 驗證器的 QR 碼。' }] },
-  footer: { tagline: '離線加密的帳號帳本', product: '產品', support: '支援', legal: '說明', links: { features: '功能', pricing: '價格', help: '使用說明', faq: '常見問題', privacy: '隱私權政策', security: '安全說明' } },
+    { q: '忘了主密碼怎麼辦？', a: '用建立時保存的恢復金鑰重新設定。沒有恢復金鑰就無法打開——因為連我們也打不開。' },
+    { q: '能從其他密碼管理器匯入嗎？', a: '支援從 1Password、Bitwarden、KeePass、LastPass、Apple 密碼和瀏覽器匯出的檔案匯入，也能匯入 Google 身份驗證器的 QR 碼。' }] },
+  footer: { tagline: '離線加密的帳號帳本', product: '產品', support: '支援', legal: '說明', links: { features: '功能', pricing: '價格', help: '說明中心', faq: '常見問題', terms: '使用條款', about: '關於', contact: '聯絡支援', privacy: '隱私權政策', security: '安全說明' } },
   privacy: { title: '隱私權政策', updated: '最後更新：2026 年 10 月 23 日', sections: [
     { h: '一句話概括', p: ['Vaultyn 不收集、不上傳、不出售你的任何個人資料。沒有帳號系統，沒有保存你資料的伺服器，也沒有統計和廣告。'] },
     { h: '你的資料存在哪裡', p: ['你在 Vaultyn 裡記錄的全部內容，都用 AES-256-GCM 加密（金鑰由你的主密碼經 Argon2id 產生），保存在你的 Mac 上和你自己選擇的資料夾裡（例如 iCloud 雲碟）。', '我們無法存取這些資料，也無法幫你找回主密碼。'] },
@@ -116,7 +116,7 @@ const zhHant: Dict = {
       '<b>網站圖示</b>（預設關閉）：開啟後，App 會造訪項目對應的網站讀取圖示，或向 icon.horse、favicone.com 查詢，會傳送該網站的網域。',
       '<b>App Store 圖示</b>：為 App 類項目向 Apple 的公開查詢介面傳送應用程式編號。',
       '<b>密碼外洩檢查</b>：只傳送密碼 SHA-1 雜湊值的前 5 個字元到 Have I Been Pwned（api.pwnedpasswords.com），比對在本機完成，密碼本身不會離開你的裝置。',
-      '<b>外洩網站、兩步驟驗證支援清單</b>：從 haveibeenpwned.com 和 2fa.directory 下載公開清單，在本機比對，不傳送你的資料。',
+      '<b>外洩網站、兩步驗證支援清單</b>：從 haveibeenpwned.com 和 2fa.directory 下載公開清單，在本機比對，不傳送你的資料。',
       '<b>匯率</b>（資產功能，預設關閉）：從 open.er-api.com 取得匯率，只傳送本位幣代碼。',
       '這些服務由第三方營運，它們能看到你的 IP 位址，並適用它們各自的隱私權政策。'] },
     { h: 'App Store 購買', p: ['購買和付款由 Apple 處理。我們只能看到 Apple 提供的匿名銷售統計，看不到你的姓名、信箱或付款資訊。'] },
@@ -124,9 +124,9 @@ const zhHant: Dict = {
     { h: '聯絡我們', p: ['對本政策有任何疑問，請寄信到 <a href="mailto:support@vaultyn.com">support@vaultyn.com</a>。本政策如有更新，會在此頁面公布。'] }] },
   help: { title: '使用說明', lead: '遇到問題、有建議，或者想回報安全問題，都可以聯絡我們。',
     contactH: '聯絡我們', contactP: '寄信到 <a href="mailto:support@vaultyn.com">support@vaultyn.com</a>，我們會盡快回覆。請不要在信裡傳送你的密碼或主密碼。',
-    startH: '開始使用', steps: ['設定主密碼，並把復原金鑰保存在安全的地方（可以列印出來）。', '選擇資料夾。想在多台 Mac 上使用，就放在 iCloud 雲碟等雲端硬碟裡。', '新增帳號，或者從其他密碼管理器匯入。'],
+    startH: '開始使用', steps: ['設定主密碼，並把恢復金鑰保存在安全的地方（可以列印出來）。', '選擇資料夾。想在多台 Mac 上使用，就放在 iCloud 雲碟等雲端硬碟裡。', '新增帳號，或者從其他密碼管理器匯入。'],
     faqH: '常見問題', items: [
-      { q: '忘了主密碼怎麼辦？', a: '在鎖定畫面點「忘記主密碼？」，用復原金鑰重新設定。復原金鑰也遺失的話，資料無法打開，我們也無能為力。' },
+      { q: '忘了主密碼怎麼辦？', a: '在鎖定畫面點「忘記主密碼？」，用恢復金鑰重新設定。恢復金鑰也遺失的話，資料無法打開，我們也無能為力。' },
       { q: '換了新 Mac 怎麼繼續用？', a: '在新 Mac 上安裝 Vaultyn，在鎖定畫面點「開啟同步檔案」，選擇雲端硬碟裡的 vault-sync.json，輸入主密碼即可。' },
       { q: '怎麼從備份復原？', a: '在鎖定畫面點「從備份復原」，選擇資料夾 backups 裡某一天的備份檔。' },
       { q: '怎麼刪除全部資料？', a: '刪除資料夾，並在「設定」裡清除本機保存的資料，然後刪除 App 即可。我們這裡沒有你的任何資料，不需要另外申請刪除。' }],
@@ -138,8 +138,8 @@ const en: Dict = {
   nav: { features: 'Features', security: 'Security', pricing: 'Pricing', help: 'Help', get: 'Get' },
   hero: { eyebrow: 'The offline, encrypted account ledger', h1a: 'Every account,', h1b: 'clearly accounted for.',
     lead: 'Passwords, linked phones and emails, two-factor codes, backup codes, security questions… all in one place. Encrypted and kept only on your own Mac and cloud drive — no servers, no sign-up.',
-    store: 'Mac App Store · Coming soon', more: 'See features ↓', fine: 'macOS 12 or later · 简体中文 / 繁體中文 / English',
-    checkTitle: 'Security check', checkChips: ['1 weak', '2 reused', '2 expiring'], checkNote: 'Done entirely on this Mac' },
+    store: 'Mac App Store · Coming soon', more: 'See features →', fine: 'macOS 12 or later · 简体中文 / 繁體中文 / English',
+    checkTitle: 'Security check', checkChips: ['1 weak', '2 reused', '2 expiring'], checkNote: 'Done entirely on this Mac', videoLabel: 'Vaultyn demo: searching an account, copying a password, viewing a code and the security check', pause: 'Pause demo', play: 'Play demo' },
   trust: [['Fully offline', 'Works without internet'], ['No sign-up', 'No accounts, no servers'], ['AES-256', 'Argon2id protects your master password'], ['Daily backups', 'Sync through iCloud Drive'], ['Three languages', 'English, 简体, 繁體']],
   pain: { kicker: 'Why Vaultyn', h: 'Passwords remembered. What about the rest?', p: 'Password managers remember your passwords. The real headaches are often everything around them.',
     items: [['“Which email did I sign up with?”', 'Each account keeps its <b>phone, email and sign-in method</b> together — just search.'],
@@ -161,7 +161,7 @@ const en: Dict = {
     { q: 'Can I use it on more than one Mac?', a: 'Yes. Keep the data folder in iCloud Drive, Dropbox, OneDrive or similar, and open the same file on each Mac.' },
     { q: 'What if I forget my master password?', a: 'Reset it with the recovery key you saved when you created the vault. Without it the data can’t be opened — not even by us.' },
     { q: 'Can I import from another password manager?', a: 'Yes — files exported from 1Password, Bitwarden, KeePass, LastPass, Apple Passwords and browsers, plus Google Authenticator export QR codes.' }] },
-  footer: { tagline: 'The offline, encrypted account ledger', product: 'Product', support: 'Support', legal: 'Legal', links: { features: 'Features', pricing: 'Pricing', help: 'Help', faq: 'FAQ', privacy: 'Privacy policy', security: 'Security' } },
+  footer: { tagline: 'The offline, encrypted account ledger', product: 'Product', support: 'Support', legal: 'Legal', links: { features: 'Features', pricing: 'Pricing', help: 'Help Center', faq: 'FAQ', terms: 'Terms of Use', about: 'About', contact: 'Contact support', privacy: 'Privacy policy', security: 'Security' } },
   privacy: { title: 'Privacy policy', updated: 'Last updated: October 23, 2026', sections: [
     { h: 'In one sentence', p: ['Vaultyn does not collect, upload or sell any of your personal data. There is no account system, no server holding your data, and no analytics or ads.'] },
     { h: 'Where your data lives', p: ['Everything you record in Vaultyn is encrypted with AES-256-GCM (the key is derived from your master password with Argon2id) and stored on your Mac and in a folder you choose (for example iCloud Drive).', 'We cannot access this data and cannot recover your master password.'] },

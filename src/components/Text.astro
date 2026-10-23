@@ -1,0 +1,35 @@
+---
+// 安全、价格、使用条款、关于：文字页面的共用排版（段落、列表、表格）
+import Base from '../layouts/Base.astro';
+import type { TextPage } from '../pages-text';
+import type { Lang } from '../i18n';
+interface Props { lang: Lang; page: string; data: TextPage }
+const { lang, page, data } = Astro.props;
+---
+<Base lang={lang} page={page} title={data.title}>
+  <main class="doc"><div class="wrap narrow">
+    <h1>{data.title}</h1><p class="lead">{data.lead}</p>{data.updated && <div class="muted">{data.updated}</div>}
+    {data.blocks.map(b => (
+      <section class="rv">
+        <h2>{b.h}</h2>
+        {b.table && <table>{b.table[0][0] && <thead><tr>{b.table[0].map(c => <th>{c}</th>)}</tr></thead>}<tbody>{b.table.slice(1).map(r => <tr>{r.map((c, i) => i ? <td set:html={c} /> : <th scope="row">{c}</th>)}</tr>)}</tbody></table>}
+        {b.p?.map(x => <p set:html={x} />)}
+        {b.list && <ul>{b.list.map(x => <li set:html={x} />)}</ul>}
+      </section>))}
+  </div></main>
+</Base>
+
+<style>
+.doc{padding:56px 0 20px}.narrow{max-width:800px}
+h1{font-size:clamp(34px,5vw,44px);margin:0 0 10px;letter-spacing:-.3px}
+.lead{font-size:19px;color:var(--sub);margin:0 0 8px}
+section{margin-top:36px}h2{font-size:23px;margin:0 0 12px}
+p,li,td{color:#2b3343;font-size:16px;line-height:1.75}
+ul{padding-left:22px}li{margin:6px 0}
+.doc :global(a){color:var(--blue)}
+table{border-collapse:collapse;width:100%;margin:6px 0 14px;font-size:15px}
+th,td{border-bottom:1px solid var(--line);padding:11px 12px;text-align:left;vertical-align:top}
+thead th{background:var(--soft);font-weight:600}
+tbody th{font-weight:600;white-space:nowrap;width:1%;padding-right:24px}
+@media (max-width:640px){tbody th{white-space:normal}}
+</style>

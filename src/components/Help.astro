@@ -1,0 +1,77 @@
+---
+// 帮助中心：左侧目录 + 搜索，右侧文章（entry 为空时显示文章列表）
+import Base from '../layouts/Base.astro';
+import { render, type CollectionEntry } from 'astro:content';
+import { path, type Lang } from '../i18n';
+import { HELP_UI, helpArticles, slugOf } from '../help';
+interface Props { lang: Lang; entry?: CollectionEntry<'help'> }
+const { lang, entry } = Astro.props;
+const ui = HELP_UI[lang], list = await helpArticles(lang);
+const cur = entry ? slugOf(entry) : '';
+const i = list.findIndex(e => slugOf(e) === cur), prev = i > 0 ? list[i - 1] : null, next = i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+const { Content } = entry ? await render(entry) : { Content: null };
+const link = (e: CollectionEntry<'help'>) => path(lang, `help/${slugOf(e)}/`);
+---
+<Base lang={lang} page={entry ? `help/${cur}/` : 'help/'} title={entry ? entry.data.title : ui.title} desc={entry?.data.description}>
+  <div class="wrap help">
+    <aside>
+      <a class="home" href={path(lang, 'help/')}>{ui.title}</a>
+      <div id="search" data-placeholder={ui.search}></div>
+      <nav>{list.map(e => <a href={link(e)} class={slugOf(e) === cur ? 'on' : ''}>{e.data.title}</a>)}</nav>
+    </aside>
+    <main>
+      {entry ? (
+        <article data-pagefind-body>
+          <h1>{entry.data.title}</h1>
+          <div class="prose"><Content /></div>
+          <div class="pn" data-pagefind-ignore>{prev ? <a href={link(prev)}>← {ui.prev}<b>{prev.data.title}</b></a> : <span></span>}{next && <a class="nx" href={link(next)}>{ui.next} →<b>{next.data.title}</b></a>}</div>
+        </article>
+      ) : (<>
+        <h1>{ui.title}</h1><p class="lead">{ui.lead}</p>
+        <div class="cards">{list.map(e => <a href={link(e)}><b>{e.data.title}</b><span>{e.data.description}</span></a>)}</div>
+      </>)}
+      <div class="ask"><b>{ui.ask}</b> <span set:html={ui.askP} /></div>
+    </main>
+  </div>
+  <link rel="stylesheet" href="/pagefind/pagefind-ui.css">
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    // 站内搜索（构建时由 Pagefind 生成索引；只搜帮助文章，按当前语言）
+    addEventListener('DOMContentLoaded', () => {
+      const el = document.getElementById('search');
+      if (window.PagefindUI && el) new PagefindUI({ element: '#search', showImages: false, resetStyles: false, translations: { placeholder: el.dataset.placeholder } });
+    });
+  </script>
+</Base>
+
+<style>
+.help{display:grid;grid-template-columns:250px 1fr;gap:48px;padding:40px 0 20px}
+aside{position:sticky;top:84px;align-self:start;max-height:calc(100vh - 100px);overflow:auto}
+.home{display:block;font-weight:700;font-size:17px;margin-bottom:12px}
+#search{margin-bottom:14px;--pagefind-ui-scale:.78;--pagefind-ui-primary:var(--blue);--pagefind-ui-border-radius:10px;--pagefind-ui-font:inherit}
+nav{display:flex;flex-direction:column;gap:2px}
+nav a{padding:7px 12px;border-radius:9px;font-size:15px;color:var(--sub)}nav a:hover{background:var(--soft);color:var(--ink)}
+nav a.on{background:var(--ice);color:var(--blue);font-weight:600}
+main{min-width:0;max-width:760px}
+h1{font-size:36px;margin:0 0 14px;letter-spacing:-.3px}
+.lead{font-size:18px;color:var(--sub);margin:0 0 26px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cards a{border:1px solid var(--line);border-radius:14px;padding:16px 18px;transition:border-color .15s,box-shadow .15s}
+.cards a:hover{border-color:#bcd4f7;box-shadow:0 6px 20px rgba(0,122,255,.08)}
+.cards b{display:block;font-size:16px;margin-bottom:4px}.cards span{font-size:14px;color:var(--sub)}
+.prose{font-size:16px;line-height:1.75;color:#262e3d}
+.prose :global(h2){font-size:22px;margin:32px 0 10px}
+.prose :global(a){color:var(--blue)}
+.prose :global(code){background:var(--soft);border-radius:5px;padding:1px 6px;font-size:.92em}
+.prose :global(table){border-collapse:collapse;width:100%;margin:14px 0;font-size:15px}
+.prose :global(th),.prose :global(td){border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+.prose :global(th){background:var(--soft);font-weight:600}
+.prose :global(blockquote){margin:16px 0;padding:10px 16px;background:var(--ice);border-radius:10px;color:#1e3a8a}
+.prose :global(blockquote p){margin:0}
+.prose :global(li){margin:4px 0}
+.pn{display:flex;justify-content:space-between;gap:16px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+.pn a{font-size:14px;color:var(--sub)}.pn b{display:block;font-size:16px;color:var(--blue)}.pn .nx{text-align:right}
+.ask{margin-top:36px;padding:16px 20px;background:var(--soft);border-radius:14px;font-size:15px}
+.ask :global(a){color:var(--blue)}
+@media (max-width:860px){.help{grid-template-columns:1fr;gap:20px}aside{position:static;max-height:none}.cards{grid-template-columns:1fr}}
+</style>

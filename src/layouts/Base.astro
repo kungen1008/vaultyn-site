@@ -16,6 +16,7 @@ const site = 'https://vaultyn.com';
   <title>{pageTitle}</title>
   <meta name="description" content={pageDesc}>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <script is:inline>document.documentElement.classList.add('js')</script>
   <link rel="canonical" href={site + path(lang, page)}>
   {LANGS.map(l => <link rel="alternate" hreflang={HTML_LANG[l]} href={site + path(l, page)}>)}
   <link rel="alternate" hreflang="x-default" href={site + path('en', page)}>
@@ -29,23 +30,32 @@ const site = 'https://vaultyn.com';
   <nav class="top"><div class="wrap">
     <a class="brand" href={path(lang)}><span class="ic"><img src="/favicon.svg" alt="" width="34" height="34"></span>Vaultyn</a>
     <div class="links">
-      <a href={path(lang) + '#features'}>{t.nav.features}</a><a href={path(lang) + '#security'}>{t.nav.security}</a>
-      <a href={path(lang) + '#pricing'}>{t.nav.pricing}</a><a href={path(lang, 'support/')}>{t.nav.help}</a>
+      <a href={path(lang, 'features/')}>{t.nav.features}</a><a href={path(lang, 'security/')}>{t.nav.security}</a>
+      <a href={path(lang, 'pricing/')}>{t.nav.pricing}</a><a href={path(lang, 'help/')}>{t.nav.help}</a>
     </div>
     <div class="right">
       <span class="lang">{LANGS.map((l, i) => <>{i > 0 && ' · '}{l === lang ? <b>{LANG_LABEL[l]}</b> : <a href={path(l, page)} hreflang={HTML_LANG[l]}>{LANG_LABEL[l]}</a>}</>)}</span>
-      <a class="btn p sm" href={path(lang) + '#pricing'}>{t.nav.get}</a>
+      <a class="btn p sm" href={path(lang, 'pricing/')}>{t.nav.get}</a>
     </div>
   </div></nav>
   <slot />
   <footer><div class="wrap">
     <div><div class="brand small"><img src="/favicon.svg" alt="" width="24" height="24">Vaultyn</div><div class="muted">{t.footer.tagline}<br>© 2026 Kunz</div></div>
     <div class="cols">
-      <div><b>{t.footer.product}</b><a href={path(lang) + '#features'}>{t.footer.links.features}</a><a href={path(lang) + '#pricing'}>{t.footer.links.pricing}</a></div>
-      <div><b>{t.footer.support}</b><a href={path(lang, 'support/')}>{t.footer.links.help}</a><a href={path(lang) + '#faq'}>{t.footer.links.faq}</a><a href="mailto:support@vaultyn.com">support@vaultyn.com</a></div>
-      <div><b>{t.footer.legal}</b><a href={path(lang, 'privacy/')}>{t.footer.links.privacy}</a><a href={path(lang) + '#security'}>{t.footer.links.security}</a></div>
+      <div><b>{t.footer.product}</b><a href={path(lang, 'features/')}>{t.footer.links.features}</a><a href={path(lang, 'security/')}>{t.footer.links.security}</a><a href={path(lang, 'pricing/')}>{t.footer.links.pricing}</a></div>
+      <div><b>{t.footer.support}</b><a href={path(lang, 'help/')}>{t.footer.links.help}</a><a href={path(lang, 'help/faq/')}>{t.footer.links.faq}</a><a href={path(lang, 'support/')}>{t.footer.links.contact}</a></div>
+      <div><b>{t.footer.legal}</b><a href={path(lang, 'privacy/')}>{t.footer.links.privacy}</a><a href={path(lang, 'terms/')}>{t.footer.links.terms}</a><a href={path(lang, 'about/')}>{t.footer.links.about}</a></div>
     </div>
   </div></footer>
+  <script is:inline>
+    // 滚动到附近时淡入（系统开了“减少动态效果”时直接显示）
+    (() => {
+      const els = document.querySelectorAll('.rv');
+      if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(e => e.classList.add('in')); return; }
+      const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+      els.forEach(e => io.observe(e));
+    })();
+  </script>
 </body>
 </html>
 
@@ -77,6 +87,12 @@ footer{border-top:1px solid var(--line);padding:40px 0 60px;font-size:14px;color
 footer .wrap{display:flex;gap:40px;flex-wrap:wrap}
 footer .cols{display:flex;gap:60px;margin-left:auto;flex-wrap:wrap}
 footer .cols div{display:flex;flex-direction:column;gap:8px}footer .cols b{color:var(--ink)}footer a:hover{color:var(--ink)}
+/* 滚动淡入（用动画而不是 transition，不影响卡片自己的悬停效果）；同一组里的元素依次出现 */
+.js .rv{opacity:0}
+.js .rv.in{animation:rvIn .7s cubic-bezier(.2,.7,.2,1) both}
+.js .rv.in:nth-child(2){animation-delay:.06s}.js .rv.in:nth-child(3){animation-delay:.12s}.js .rv.in:nth-child(4){animation-delay:.18s}
+@keyframes rvIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.js .rv{opacity:1}.js .rv.in{animation:none}}
 @media (max-width:820px){
   .links{display:none}
   nav.top .wrap{gap:12px}
