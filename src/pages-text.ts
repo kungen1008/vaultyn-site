@@ -57,22 +57,22 @@ export const SECURITY: Record<Lang, TextPage> = {
 export const PRICING: Record<Lang, TextPage> = {
   zh: { title: '价格', lead: '先免费试用 14 天，觉得好用再购买。', blocks: [
     { h: 'Vaultyn for Mac', table: [['', ''], ['下载', '免费，在 Mac App Store 获取'], ['试用', '14 天，全部功能都能用'], ['解锁全部功能', 'US$24.99（各地区以 App Store 显示的价格为准）'], ['条目数量', '不限'], ['家人共享', '支持，一家人共用一次购买']] },
-    { h: '试用结束以后', p: ['试用期结束、还没有购买时，你的数据仍然完整保留，可以继续打开、查看和导出，不会丢失。购买后即可继续添加和修改。'] },
-    { h: '恢复购买', p: ['换了新 Mac，或者重新安装后，在 Vaultyn 的设置里点“恢复购买”，用同一个 Apple 账户登录 App Store 即可，不需要再付钱。'] },
+    { h: '试用结束以后', p: ['试用结束后，你的数据仍然完整保留，不会丢失。'] },
+    { h: '换了新 Mac', p: ['用同一个 Apple 账户登录 App Store，就可以恢复已经购买的内容，不需要再付钱。'] },
     { h: '退款', p: ['购买和付款由 Apple 处理。如果需要退款，请通过 Apple 的“报告问题”页面（reportaproblem.apple.com）申请。'] },
     { h: '有问题？', p: [`发邮件到 ${MAIL}。`] },
   ] },
   'zh-hant': { title: '價格', lead: '先免費試用 14 天，覺得好用再購買。', blocks: [
     { h: 'Vaultyn for Mac', table: [['', ''], ['下載', '免費，在 Mac App Store 取得'], ['試用', '14 天，全部功能都能用'], ['解鎖全部功能', 'US$24.99（各地區以 App Store 顯示的價格為準）'], ['項目數量', '不限'], ['家人共享', '支援，一家人共用一次購買']] },
-    { h: '試用結束以後', p: ['試用期結束、還沒有購買時，你的資料仍然完整保留，可以繼續開啟、查看和匯出，不會遺失。購買後即可繼續新增和修改。'] },
-    { h: '恢復購買', p: ['換了新 Mac，或者重新安裝後，在 Vaultyn 的設定裡點「恢復購買」，用同一個 Apple 帳號登入 App Store 即可，不需要再付錢。'] },
+    { h: '試用結束以後', p: ['試用結束後，你的資料仍然完整保留，不會遺失。'] },
+    { h: '換了新 Mac', p: ['用同一個 Apple 帳號登入 App Store，就可以恢復已經購買的內容，不需要再付錢。'] },
     { h: '退款', p: ['購買和付款由 Apple 處理。如需退款，請透過 Apple 的「回報問題」頁面（reportaproblem.apple.com）申請。'] },
     { h: '有問題？', p: [`寄信到 ${MAIL}。`] },
   ] },
   en: { title: 'Pricing', lead: 'Try it free for 14 days, then buy it if you like it.', blocks: [
     { h: 'Vaultyn for Mac', table: [['', ''], ['Download', 'Free on the Mac App Store'], ['Trial', '14 days with every feature'], ['Unlock everything', 'US$24.99 (local prices as shown on the App Store)'], ['Entries', 'Unlimited'], ['Family Sharing', 'Supported — one purchase for the whole family']] },
-    { h: 'After the trial', p: ['If the trial ends before you buy, your data stays intact: you can still open, view and export it. Buy to keep adding and editing.'] },
-    { h: 'Restore purchases', p: ['On a new Mac or after reinstalling, choose “Restore Purchases” in Vaultyn’s settings and sign in to the App Store with the same Apple Account. No need to pay again.'] },
+    { h: 'After the trial', p: ['When the trial ends, your data stays intact — nothing is lost.'] },
+    { h: 'On a new Mac', p: ['Sign in to the App Store with the same Apple Account to restore your purchase. No need to pay again.'] },
     { h: 'Refunds', p: ['Purchases and payments are handled by Apple. To request a refund, use Apple’s Report a Problem page (reportaproblem.apple.com).'] },
     { h: 'Questions?', p: [`Email ${MAIL}.`] },
   ] },
