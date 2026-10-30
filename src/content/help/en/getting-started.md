@@ -19,9 +19,9 @@ After you create the vault, Vaultyn shows a **recovery key**. It’s the only wa
 - It’s **shown only once** — write it down or print it, and keep it somewhere safe.
 - Keep it with your [emergency sheet](../emergency-sheet/), for example in a home safe.
 
-## 3. Choose a data folder
+## 3. Confirm the data folder
 
-Vaultyn asks for a folder to store your encrypted data. To use several Macs, choose a folder inside iCloud Drive, Dropbox or another synced folder. See [Data folder & iCloud sync](../data-folder/).
+Vaultyn saves encrypted data in its private folder on this Mac by default. For multi-Mac sync, go to **Settings → Data & sync** and change it to iCloud Drive, Google Drive, OneDrive or Dropbox. See [Data folder & iCloud Drive sync](../data-folder/).
 
 ## 4. Add accounts
 

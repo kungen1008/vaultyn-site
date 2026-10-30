@@ -4,10 +4,10 @@ order: 6
 description: "把資料搬到新 Mac 上。"
 ---
 
-## 資料放在 iCloud 雲碟裡
+## 資料放在 iCloud Drive 裡
 
 1. 在新 Mac 上安裝 Vaultyn。
-2. 在鎖定畫面點 **開啟同步檔案**，選擇 iCloud 雲碟裡的 `vault-sync.json`。
+2. 在鎖定畫面點 **開啟同步檔案**，選擇 iCloud Drive 裡的 `vault-sync.json`。
 3. 輸入主密碼。
 
 ## 資料放在本機

@@ -1,10 +1,10 @@
 ---
-title: "Data folder & iCloud sync"
+title: "Data folder & iCloud Drive sync"
 order: 2
 description: "Where your data is stored and how to sync between Macs."
 ---
 
-Vaultyn has no server. Your data is encrypted and saved in **a folder you choose**.
+Vaultyn has no server. Your encrypted data is saved in **Vaultyn’s private folder on this Mac** by default; you can change it in Settings to a folder you choose.
 
 ## What’s in the folder
 
@@ -19,7 +19,7 @@ Everything is encrypted and unreadable without your master password.
 
 ## Sync between Macs
 
-Put the data folder in **iCloud Drive** (or Dropbox, OneDrive…), then open the same `vault-sync.json` on each Mac:
+Change the data folder to **iCloud Drive** (or Google Drive, OneDrive or Dropbox), then open the same `vault-sync.json` on each Mac:
 
 1. On the first Mac, go to **Settings → Data & sync** and choose a folder in iCloud Drive.
 2. On the other Mac, install Vaultyn, click **Open sync file** on the lock screen, choose the same `vault-sync.json` and enter your master password.

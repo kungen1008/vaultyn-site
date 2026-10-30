@@ -12,7 +12,7 @@ const i = list.findIndex(e => slugOf(e) === cur), prev = i > 0 ? list[i - 1] : n
 const { Content } = entry ? await render(entry) : { Content: null };
 const link = (e: CollectionEntry<'help'>) => path(lang, `help/${slugOf(e)}/`);
 ---
-<Base lang={lang} page={entry ? `help/${cur}/` : 'help/'} title={entry ? entry.data.title : ui.title} desc={entry?.data.description}>
+<Base lang={lang} page={entry ? `help/${cur}/` : 'help/'} title={entry ? entry.data.title : ui.title} desc={entry?.data.description || ui.lead}>
   <div class="wrap help">
     <aside>
       <a class="home" href={path(lang, 'help/')}>{ui.title}</a>
