@@ -36,7 +36,7 @@ const chipCls = ['c-r', 'c-w', 'c-w'];
     {t.feats.map((f, i) => (
       <div class={`feat rv ${i % 2 ? 'r' : ''}`}>
         <div class="txt"><div class="kicker">{f.kicker}</div><h3 set:html={f.title} /><p>{f.text}</p><ul>{f.points.map(p => <li>{p}</li>)}</ul></div>
-        <div class="img"><img src={`${img}/${f.img}.webp`} width="1920" height="1200" alt="" loading="lazy"></div>
+        <div class="img"><img src={`${img}/${f.img}.webp`} width="1920" height="1200" alt={f.title.replace(/<br>/g, ' ')} loading="lazy"></div>
       </div>))}
     <div class="grid8">{t.grid.map(([e, b, s]) => <div class="rv"><div class="e">{e}</div><b>{b}</b><span>{s}</span></div>)}</div>
   </div></section>

@@ -8,7 +8,8 @@ const pageTitle = title ? `${title} · Vaultyn` : t.meta.title;
 const pageDesc = desc || t.meta.desc;
 const site = 'https://vaultyn.com';
 const pageUrl = site + path(lang, page);
-const shareImage = site + `/share/${lang}.png`;
+const shareImage = site + `/share/${lang}-v2.png`;
+const shareAlt = lang === 'zh' ? 'Vaultyn：每个账号，都记得清清楚楚。' : lang === 'zh-hant' ? 'Vaultyn：每個帳號，都記得清清楚楚。' : 'Vaultyn: Know every account.';
 const schema = !page ? {
   '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Vaultyn',
   applicationCategory: 'UtilitiesApplication', operatingSystem: 'macOS 12 or later',
@@ -36,13 +37,16 @@ const schema = !page ? {
   <meta property="og:type" content="website">
   <meta property="og:url" content={pageUrl}>
   <meta property="og:image" content={shareImage}>
+  <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={shareAlt}>
   <meta property="og:site_name" content="Vaultyn">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content={pageTitle}>
   <meta name="twitter:description" content={pageDesc}>
   <meta name="twitter:image" content={shareImage}>
+  <meta name="twitter:image:alt" content={shareAlt}>
   {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
 </head>
 <body>
