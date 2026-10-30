@@ -5,6 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
+    "audit": "node scripts/audit-site.mjs",
+    "check": "npm run build && npm run audit",
+    "share-cards": "pwsh -NoProfile -File scripts/share-cards.ps1",
     "preview": "astro preview"
   },
   "dependencies": {

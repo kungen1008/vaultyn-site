@@ -6,7 +6,7 @@ import type { Lang } from '../i18n';
 interface Props { lang: Lang; page: string; data: TextPage }
 const { lang, page, data } = Astro.props;
 ---
-<Base lang={lang} page={page} title={data.title}>
+<Base lang={lang} page={page} title={data.title} desc={data.lead}>
   <main class="doc"><div class="wrap narrow">
     <h1>{data.title}</h1><p class="lead">{data.lead}</p>{data.updated && <div class="muted">{data.updated}</div>}
     {data.blocks.map(b => (

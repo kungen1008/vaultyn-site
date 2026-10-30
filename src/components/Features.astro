@@ -7,7 +7,7 @@ interface Props { lang: Lang }
 const { lang } = Astro.props;
 const f = FEATURES[lang]!, img = shots(lang);
 ---
-<Base lang={lang} page="features/" title={f.title}>
+<Base lang={lang} page="features/" title={f.title} desc={f.lead}>
   <header class="fh"><div class="wrap">
     <h1>{f.title}</h1><p class="lead">{f.lead}</p>
     <nav class="toc">{f.sections.map(s => <a href={`#${s.id}`}>{s.kicker}</a>)}</nav>

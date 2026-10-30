@@ -1,10 +1,10 @@
 ---
-title: 数据文件夹与 iCloud 同步
+title: 数据文件夹与 iCloud Drive 同步
 order: 2
 description: 数据保存在哪里、怎样在多台 Mac 之间同步。
 ---
 
-Vaultyn 没有服务器。你的数据加密后保存在**你自己选的文件夹**里。
+Vaultyn 没有服务器。你的数据加密后默认保存在这台 Mac 的 **Vaultyn 私有文件夹**；你也可以在设置中改到自己选择的文件夹。
 
 ## 文件夹里有什么
 
@@ -19,9 +19,9 @@ Vaultyn 没有服务器。你的数据加密后保存在**你自己选的文件�
 
 ## 在多台 Mac 上同步
 
-把数据文件夹放在 **iCloud 云盘**（或 Dropbox、OneDrive 等）的同步文件夹里，然后在每台 Mac 上都打开同一个 `vault-sync.json`：
+把数据文件夹改到 **iCloud Drive**（或 Google Drive、OneDrive、Dropbox）的同步文件夹，然后在每台 Mac 上都打开同一个 `vault-sync.json`：
 
-1. 在第一台 Mac 上，进入 **设置 → 数据同步**，选择 iCloud 云盘里的一个文件夹。
+1. 在第一台 Mac 上，进入 **设置 → 数据同步**，选择 iCloud Drive 里的一个文件夹。
 2. 在另一台 Mac 上安装 Vaultyn，在锁屏页点 **打开同步文件**，选择同一个 `vault-sync.json`，输入主密码。
 
 > 请不要在两台 Mac 上**同时**修改同一份数据。改完一台，等同步完成再用另一台。

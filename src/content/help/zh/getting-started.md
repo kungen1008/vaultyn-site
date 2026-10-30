@@ -19,9 +19,9 @@ description: 第一次打开 Vaultyn：设置主密码、保存恢复密钥、�
 - 它**只显示这一次**，请抄写或打印下来，放在安全的地方。
 - 可以和[紧急恢复页](../emergency-sheet/)放在一起，例如家里的保险柜。
 
-## 3. 选择数据文件夹
+## 3. 确认数据文件夹
 
-Vaultyn 会请你选择一个文件夹来保存加密后的数据。想在多台 Mac 上使用，就选 iCloud 云盘、Dropbox 等同步文件夹里的一个文件夹。详见[数据文件夹与 iCloud 同步](../data-folder/)。
+Vaultyn 默认把加密数据保存在这台 Mac 的 Vaultyn 私有文件夹。想在多台 Mac 上使用，可进入 **设置 → 数据同步**，改到 iCloud Drive、Google Drive、OneDrive 或 Dropbox。详见[数据文件夹与 iCloud Drive 同步](../data-folder/)。
 
 ## 4. 添加账号
 
