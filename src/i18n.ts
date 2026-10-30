@@ -28,7 +28,7 @@ export interface Dict {
 }
 
 const zh: Dict = {
-  meta: { title: 'Vaultyn · 离线加密的账号账本', desc: '密码、绑定的手机和邮箱、两步验证、备用码、安全问答，一个地方记全。数据加密后只存在你自己的设备和网盘里，没有服务器，不用注册。' },
+  meta: { title: 'Vaultyn · 离线加密的账号账本', desc: '密码、绑定邮箱和手机、两步验证码、备用码、安全问答与账号关系，一个地方安全记全。Vaultyn 在 Mac 本地加密保存数据，无需注册、没有保存你数据的服务器，也可由你选择 iCloud Drive 等同步文件夹。' },
   nav: { features: '功能', security: '安全', pricing: '价格', help: '帮助', get: '获取' },
   hero: { eyebrow: '离线加密的账号账本', h1a: '每个账号，', h1b: '都记得清清楚楚。',
     lead: '密码、绑定的手机和邮箱、两步验证、备用码、安全问答……一个地方记全。数据加密后默认保存在这台 Mac 的 Vaultyn 私有文件夹，也可以由你改到自己的同步文件夹——没有服务器，不用注册。',
@@ -81,7 +81,7 @@ const zh: Dict = {
 };
 
 const zhHant: Dict = {
-  meta: { title: 'Vaultyn · 離線加密的帳號帳本', desc: '密碼、綁定的手機和電子郵件、兩步驗證、備用碼、安全問答，一個地方記全。資料加密後只存在你自己的裝置和雲端硬碟裡，沒有伺服器，不用註冊。' },
+  meta: { title: 'Vaultyn · 離線加密的帳號帳本', desc: '密碼、綁定信箱和手機、兩步驗證碼、備用碼、安全問答與帳號關係，一個地方安全記全。Vaultyn 在 Mac 本機加密保存資料，不用註冊、沒有保存你資料的伺服器，也可由你選擇 iCloud Drive 等同步資料夾。' },
   nav: { features: '功能', security: '安全', pricing: '價格', help: '說明', get: '取得' },
   hero: { eyebrow: '離線加密的帳號帳本', h1a: '每個帳號，', h1b: '都記得清清楚楚。',
     lead: '密碼、綁定的手機和電子郵件、兩步驗證、備用碼、安全問答……一個地方記全。資料加密後預設保存在這台 Mac 的 Vaultyn 私有資料夾，也可以由你改到自己的同步資料夾——沒有伺服器，不用註冊。',
@@ -134,7 +134,7 @@ const zhHant: Dict = {
 };
 
 const en: Dict = {
-  meta: { title: 'Vaultyn · The offline, encrypted account ledger', desc: 'Passwords, linked phones and emails, two-factor codes, backup codes and security questions — all in one place. Encrypted in a local folder you control. No servers, no sign-up.' },
+  meta: { title: 'Vaultyn · The offline, encrypted account ledger', desc: 'Keep passwords, linked emails and phones, two-factor codes, backup codes and security questions together in a private, encrypted account ledger for Mac.' },
   nav: { features: 'Features', security: 'Security', pricing: 'Pricing', help: 'Help', get: 'Get' },
   hero: { eyebrow: 'The offline, encrypted account ledger', h1a: 'Every account,', h1b: 'clearly accounted for.',
     lead: 'Passwords, linked phones and emails, two-factor codes, backup codes, security questions… all in one place. Encrypted data defaults to Vaultyn’s private folder on your Mac, or a sync folder you choose — no servers, no sign-up.',

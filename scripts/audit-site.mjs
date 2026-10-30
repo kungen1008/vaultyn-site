@@ -23,7 +23,8 @@ for (const file of htmlFiles) {
   require(/hreflang="zh-Hant"/, 'zh-Hant alternate');
   require(/hreflang="en"/, 'English alternate');
   require(/hreflang="x-default"/, 'x-default alternate');
-  require(/property="og:image" content="https:\/\/vaultyn\.com\/share\//, 'Open Graph image');
+  require(/property="og:image" content="https:\/\/vaultyn\.com\/share\/.+-v2\.png"/, 'versioned Open Graph image');
+  require(/property="og:image:alt" content="[^"]+"/, 'Open Graph image alt text');
   require(/name="twitter:card" content="summary_large_image"/, 'Twitter card');
 
   for (const href of html.matchAll(/href="([^"]+)"/g)) {
@@ -36,7 +37,7 @@ for (const file of htmlFiles) {
   }
 }
 
-for (const asset of ['share/zh.png', 'share/zh-hant.png', 'share/en.png', 'robots.txt', 'sitemap-index.xml']) {
+for (const asset of ['share/zh-v2.png', 'share/zh-hant-v2.png', 'share/en-v2.png', 'robots.txt', 'sitemap-index.xml']) {
   if (!existsSync(join(rootPath, asset))) failures.push(`missing generated asset ${asset}`);
 }
 
