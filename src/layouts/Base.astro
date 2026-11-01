@@ -12,7 +12,7 @@ const shareImage = site + `/share/${lang}-v2.png`;
 const shareAlt = lang === 'zh' ? 'Vaultyn：每个账号，都记得清清楚楚。' : lang === 'zh-hant' ? 'Vaultyn：每個帳號，都記得清清楚楚。' : 'Vaultyn: Know every account.';
 const schema = !page ? {
   '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: 'Vaultyn',
-  applicationCategory: 'UtilitiesApplication', operatingSystem: 'macOS 12 or later',
+  applicationCategory: 'UtilitiesApplication', operatingSystem: 'macOS 13 or later',
   description: pageDesc, url: pageUrl,
   featureList: ['Local AES-256-GCM encryption', 'Argon2id key derivation', 'Two-factor codes', 'Encrypted attachments', 'Automatic backups'],
 } : null;
