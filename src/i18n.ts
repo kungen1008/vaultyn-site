@@ -49,7 +49,7 @@ const zh: Dict = {
   sec: { kicker: '安全', h: '你的数据，只属于你', p: '没有服务器，就没有服务器会被攻破。我们看不到你的数据，也没有办法看到。',
     flow: [['主密码', '只在你脑子里'], ['Argon2id', '把主密码变成加密密钥，暴力破解极慢'], ['AES-256-GCM', '加密全部数据'], ['你的数据文件', '默认在 Vaultyn 私有文件夹，也可由你更改']],
     nots: [['不收集数据', '没有统计、没有广告、没有账号系统。'], ['不自动填写', '不往网页里注入代码，减少被钓鱼网站利用的可能。'], ['主密码无法找回', '所以请保存好恢复密钥——这也是“只有你能打开”的保证。']] },
-  price: { kicker: '价格', h: '先试用，再决定', p: '计划在 Mac App Store 提供 14 天完整试用。', label: 'Mac · App Store', amount: 'US$24.99', unit: '一次购买，永久解锁', points: ['计划免费下载并完整试用 14 天', '购买后没有订阅费', '条目数量不限'], btn: '即将上架' },
+  price: { kicker: '价格', h: '先试用，再决定', p: '在 Mac App Store 免费下载，可完整试用 14 天。', label: 'Mac · App Store', amount: 'US$24.99', unit: '一次购买，永久解锁', points: ['免费下载，在 App 内开始 14 天完整试用', '购买后没有订阅费', '条目数量不限'], btn: '即将上架' },
   faq: { kicker: '常见问题', h: '你可能想问', items: [
     { q: 'Mac 坏了，数据会丢吗？', a: '每次修改都会自动写入数据文件夹，每天还有备份。你可以在设置中把数据文件夹改到 iCloud Drive、Google Drive、OneDrive 或 Dropbox，换新 Mac 后打开同步文件并输入主密码。' },
     { q: '能在多台 Mac 上用吗？', a: '可以。在设置中把数据文件夹改到 iCloud Drive、Google Drive、OneDrive 或 Dropbox 等同步目录，再让各台 Mac 打开同一个同步文件。' },
@@ -102,7 +102,7 @@ const zhHant: Dict = {
   sec: { kicker: '安全', h: '你的資料，只屬於你', p: '沒有伺服器，就沒有伺服器會被攻破。我們看不到你的資料，也沒有辦法看到。',
     flow: [['主密碼', '只在你腦子裡'], ['Argon2id', '把主密碼變成加密金鑰，暴力破解極慢'], ['AES-256-GCM', '加密全部資料'], ['你的資料檔', '預設在 Vaultyn 私有資料夾，也可由你更改']],
     nots: [['不收集資料', '沒有統計、沒有廣告、沒有帳號系統。'], ['不自動填寫', '不往網頁裡注入程式碼，減少被釣魚網站利用的可能。'], ['主密碼無法找回', '所以請保存好恢復金鑰——這也是「只有你能打開」的保證。']] },
-  price: { kicker: '價格', h: '先試用，再決定', p: '計畫在 Mac App Store 提供 14 天完整試用。', label: 'Mac · App Store', amount: 'US$24.99', unit: '一次購買，永久解鎖', points: ['計畫免費下載並完整試用 14 天', '購買後沒有訂閱費', '項目數量不限'], btn: '即將上架' },
+  price: { kicker: '價格', h: '先試用，再決定', p: '在 Mac App Store 免費下載，可完整試用 14 天。', label: 'Mac · App Store', amount: 'US$24.99', unit: '一次購買，永久解鎖', points: ['免費下載，在 App 內開始 14 天完整試用', '購買後沒有訂閱費', '項目數量不限'], btn: '即將上架' },
   faq: { kicker: '常見問題', h: '你可能想問', items: [
     { q: 'Mac 壞了，資料會不見嗎？', a: '每次修改都會自動寫入資料夾，每天還有備份。你可以在設定中把資料夾改到 iCloud Drive、Google Drive、OneDrive 或 Dropbox，換新 Mac 後開啟同步檔並輸入主密碼。' },
     { q: '能在多台 Mac 上用嗎？', a: '可以。在設定中把資料夾改到 iCloud Drive、Google Drive、OneDrive 或 Dropbox 等同步目錄，再讓各台 Mac 開啟同一個同步檔。' },
@@ -155,7 +155,7 @@ const en: Dict = {
   sec: { kicker: 'Security', h: 'Your data belongs to you', p: 'No server means no server to breach. We can’t see your data — and have no way to.',
     flow: [['Master password', 'Only in your head'], ['Argon2id', 'Turns it into a key; brute force is very slow'], ['AES-256-GCM', 'Encrypts everything'], ['Your data file', 'Defaults to Vaultyn’s private folder; you can change it']],
     nots: [['No data collection', 'No analytics, no ads, no account system.'], ['No autofill', 'Nothing is injected into web pages, reducing phishing risk.'], ['No password recovery', 'Keep your recovery key safe — that’s what makes it yours alone.']] },
-  price: { kicker: 'Pricing', h: 'Try it first', p: 'Planned for the Mac App Store with a 14-day full trial.', label: 'Mac · App Store', amount: 'US$24.99', unit: 'one-time lifetime unlock', points: ['Planned free download and 14-day full trial', 'No subscription after purchase', 'Unlimited entries'], btn: 'Coming soon' },
+  price: { kicker: 'Pricing', h: 'Try it first', p: 'Free on the Mac App Store, with a 14-day full trial.', label: 'Mac · App Store', amount: 'US$24.99', unit: 'one-time lifetime unlock', points: ['Free download; start the 14-day full trial in the app', 'No subscription after purchase', 'Unlimited entries'], btn: 'Coming soon' },
   faq: { kicker: 'FAQ', h: 'Questions you might have', items: [
     { q: 'What if my Mac dies?', a: 'Every change is written to your data folder automatically, with daily backups. Keep the folder in iCloud Drive or another cloud drive, then open the sync file on your new Mac and enter your master password.' },
     { q: 'Can I use it on more than one Mac?', a: 'Yes. Keep the data folder in iCloud Drive, Dropbox, OneDrive or similar, and open the same file on each Mac.' },

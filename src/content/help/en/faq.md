@@ -20,11 +20,11 @@ No. Vaultyn is an account ledger and injects nothing into web pages, which also 
 
 Delete your data folder, clear the locally stored data in **Settings → About → Danger zone**, then delete the app. We hold none of your data, so there’s nothing else to request.
 
-## How will the trial and purchase work?
+## How do the trial and purchase work?
 
-The planned Mac App Store release is a free download with a 14-day full trial, followed by a US$24.99 one-time lifetime unlock (local App Store pricing may vary). There is no subscription. The exact post-trial limits will be published before release; existing encrypted data will not be deleted. See [Pricing](/en/pricing/).
+Vaultyn is a free download on the Mac App Store. Start the 14-day full trial in the app; after that, a US$24.99 one-time purchase unlocks it for life (local App Store pricing may vary). There is no subscription. After the trial you can still unlock, view, search, copy, export and restore your data, but you cannot add, edit or import; your encrypted data is never deleted. See [Pricing](/en/pricing/).
 
-Purchases will be restorable on a new Mac with the same Apple Account. Refund requests are handled by Apple through [Report a Problem](https://reportaproblem.apple.com/).
+You can restore your purchase on a new Mac with the same Apple Account. Refund requests are handled by Apple through [Report a Problem](https://reportaproblem.apple.com/).
 
 ## Still have questions?
 

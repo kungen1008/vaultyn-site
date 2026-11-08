@@ -55,23 +55,23 @@ export const SECURITY: Record<Lang, TextPage> = {
 };
 
 export const PRICING: Record<Lang, TextPage> = {
-  zh: { title: '价格', lead: '计划在 Mac App Store 免费下载，完整试用 14 天，之后 US$24.99 一次购买。', blocks: [
-    { h: 'Vaultyn for Mac', table: [['', ''], ['下载', '计划免费在 Mac App Store 获取'], ['试用', '计划 14 天内开放全部功能'], ['永久解锁', '计划 US$24.99（各地区以 App Store 显示的价格为准）'], ['订阅', '没有'], ['条目数量', '不限']] },
-    { h: '试用结束以后', p: ['试用结束后的具体功能限制会在正式上架前，于本页和 App 内购买页面明确说明。无论是否购买，现有加密数据都不会被删除。'] },
+  zh: { title: '价格', lead: '在 Mac App Store 免费下载，在 App 内开始 14 天完整试用，之后 US$24.99 一次购买、永久解锁。', blocks: [
+    { h: 'Vaultyn for Mac', table: [['', ''], ['下载', '在 Mac App Store 免费获取'], ['试用', '14 天内开放全部功能，在 App 内开始'], ['永久解锁', 'US$24.99（各地区以 App Store 显示的价格为准）'], ['订阅', '没有'], ['条目数量', '不限']] },
+    { h: '试用结束以后', p: ['试用结束后，仍可解锁、查看、搜索、复制、导出和恢复数据，但不能新增、编辑或导入。购买终身版后恢复全部功能。无论是否购买，已保存的加密数据都不会被删除。'] },
     { h: '换了新 Mac', p: ['用同一个 Apple 账户登录 App Store，就可以恢复已经购买的内容，不需要再付钱。'] },
     { h: '退款', p: ['购买和付款由 Apple 处理。如果需要退款，请通过 Apple 的“报告问题”页面（reportaproblem.apple.com）申请。'] },
     { h: '有问题？', p: [`发邮件到 ${MAIL}。`] },
   ] },
-  'zh-hant': { title: '價格', lead: '計畫在 Mac App Store 免費下載，完整試用 14 天，之後 US$24.99 一次購買。', blocks: [
-    { h: 'Vaultyn for Mac', table: [['', ''], ['下載', '計畫免費在 Mac App Store 取得'], ['試用', '計畫 14 天內開放全部功能'], ['永久解鎖', '計畫 US$24.99（各地區以 App Store 顯示的價格為準）'], ['訂閱', '沒有'], ['項目數量', '不限']] },
-    { h: '試用結束以後', p: ['試用結束後的具體功能限制會在正式上架前，於本頁和 App 內購買頁面明確說明。無論是否購買，現有加密資料都不會被刪除。'] },
+  'zh-hant': { title: '價格', lead: '在 Mac App Store 免費下載，在 App 內開始 14 天完整試用，之後 US$24.99 一次購買、永久解鎖。', blocks: [
+    { h: 'Vaultyn for Mac', table: [['', ''], ['下載', '在 Mac App Store 免費取得'], ['試用', '14 天內開放全部功能，在 App 內開始'], ['永久解鎖', 'US$24.99（各地區以 App Store 顯示的價格為準）'], ['訂閱', '沒有'], ['項目數量', '不限']] },
+    { h: '試用結束以後', p: ['試用結束後，仍可解鎖、檢視、搜尋、複製、匯出和恢復資料，但不能新增、編輯或匯入。購買終身版後恢復全部功能。無論是否購買，已保存的加密資料都不會被刪除。'] },
     { h: '換了新 Mac', p: ['用同一個 Apple 帳號登入 App Store，就可以恢復已經購買的內容，不需要再付錢。'] },
     { h: '退款', p: ['購買和付款由 Apple 處理。如需退款，請透過 Apple 的「回報問題」頁面（reportaproblem.apple.com）申請。'] },
     { h: '有問題？', p: [`寄信到 ${MAIL}。`] },
   ] },
-  en: { title: 'Pricing', lead: 'Planned as a free Mac App Store download with a 14-day full trial, then a US$24.99 one-time purchase.', blocks: [
-    { h: 'Vaultyn for Mac', table: [['', ''], ['Download', 'Planned free download on the Mac App Store'], ['Trial', 'Planned 14 days with every feature'], ['Lifetime unlock', 'Planned US$24.99 (local prices as shown on the App Store)'], ['Subscription', 'None'], ['Entries', 'Unlimited']] },
-    { h: 'After the trial', p: ['The exact post-trial feature limits will be stated here and on the in-app purchase screen before release. Existing encrypted data will not be deleted whether or not you buy.'] },
+  en: { title: 'Pricing', lead: 'Free on the Mac App Store. Start the 14-day full trial in the app, then unlock it for life with a US$24.99 one-time purchase.', blocks: [
+    { h: 'Vaultyn for Mac', table: [['', ''], ['Download', 'Free on the Mac App Store'], ['Trial', '14 days with every feature, started in the app'], ['Lifetime unlock', 'US$24.99 (local prices as shown on the App Store)'], ['Subscription', 'None'], ['Entries', 'Unlimited']] },
+    { h: 'After the trial', p: ['After the trial ends, you can still unlock, view, search, copy, export and restore your data, but you cannot add, edit or import. Buying the lifetime unlock restores every feature. Your encrypted data is never deleted, whether or not you buy.'] },
     { h: 'On a new Mac', p: ['Sign in to the App Store with the same Apple Account to restore your purchase. No need to pay again.'] },
     { h: 'Refunds', p: ['Purchases and payments are handled by Apple. To request a refund, use Apple’s Report a Problem page (reportaproblem.apple.com).'] },
     { h: 'Questions?', p: [`Email ${MAIL}.`] },
